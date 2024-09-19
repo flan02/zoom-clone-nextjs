@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
-import Navbar from "@/components/global/Navbar";
-import ThemeProvider from "./ThemeProvider";
+import Navbar from "@/components/layout/Navbar";
+import ClientProvider from "./ClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,13 +24,13 @@ export default function RootLayout({
   return (
     <ClerkProvider >
       <html lang="en">
-        <body className={inter.className}>
-          <ThemeProvider>
+        <body className={`${inter.className} bg-night text-crybaby/70`}>
+          <ClientProvider>
             <Navbar />
             <main className="max-w-5xl mx-auto px-3 py-6" >
               {children}
             </main>
-          </ThemeProvider>
+          </ClientProvider>
         </body>
       </html>
     </ClerkProvider>
