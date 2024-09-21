@@ -73,7 +73,7 @@ function useInitializeVideoClient() {
 
     setVideoClient(client); // * This is the key line that initializes the client
 
-    return () => {
+    return () => { // This is the cleanup function
       client.disconnectUser();
       setVideoClient(null);
     };

@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "zum | Home",
-  description: "get instant videocalls with your friends",
+  description: "Get instant videocalls with your friends",
   authors: {
     name: "Dan Chanivet",
     url: "https://www.danchanivet.tech"
@@ -27,7 +27,7 @@ export default function RootLayout({
         <body className={`${inter.className} bg-night text-crybaby/70`}>
           <ClientProvider>
             <Navbar />
-            <main className="max-w-5xl mx-auto px-3 py-6" >
+            <main className="max-w-5xl mx-auto px-3 py-2" >
               {children}
             </main>
           </ClientProvider>
