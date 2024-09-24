@@ -14,10 +14,8 @@ export function generateMetadata({ params: { id } }: PageProps): Metadata {
   };
 }
 
-export default async function Page({
-  params: { id },
-  searchParams: { guest },
-}: PageProps) {
+export default async function Page({ params: { id }, searchParams: { guest } }: PageProps) {
+
   const user = await currentUser();
 
   const guestMode = guest === "true";

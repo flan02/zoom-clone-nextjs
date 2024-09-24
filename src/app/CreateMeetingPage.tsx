@@ -33,12 +33,14 @@ export default function CreateMeetingPage() {
     try {
       const id = crypto.randomUUID(); // * Generate a random [unique] UUID for the call
       const callType = participantsInput ? "private-meeting" : "default";
+
       const call = client.call(callType, id);
-      const memberEmails = participantsInput
+
+      const memberEmails = participantsInput // * Get the emails from the input and separate them by commas
         .split(",")
         .map((email) => email.trim());
 
-      const memberIds = await getUserIds(memberEmails);
+      const memberIds = await getUserIds(memberEmails); // * Call the function in actions.ts to get the user IDs
       const members: MemberRequest[] = memberIds
         .map((id) => ({ user_id: id, role: "call_member" }))
         .concat({ user_id: user.id, role: "call_member" })

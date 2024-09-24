@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .str-video__participant-details {
-  color: #191F1A;
+  color: #fff; /* #191F1A; */
 }
 
 .str-video__menu-container {
-  color: #191F1A;
+  color: #fff; /* #191F1A; */
 }
 
 .str-video__notification {

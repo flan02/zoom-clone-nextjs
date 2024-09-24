@@ -28,10 +28,10 @@ export default function AudioVolumeIndicator() {
 
   return (
     <div className="flex w-72 items-center gap-3 rounded-md bg-slate-900 p-4">
-      <Icon icon="mic" />
+      <Icon icon="mic" className="bg-crybaby" />
       <div className="h-1.5 flex-1 rounded-md bg-white">
         <div
-          className="h-full w-full origin-left bg-blue-500"
+          className="h-full w-full origin-left bg-crybaby"
           style={{
             transform: `scaleX(${audioLevel / 100})`,
           }}
