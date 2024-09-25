@@ -44,9 +44,7 @@ export default function CreateMeetingPage() {
       const members: MemberRequest[] = memberIds
         .map((id) => ({ user_id: id, role: "call_member" }))
         .concat({ user_id: user.id, role: "call_member" })
-        .filter(
-          (v, i, a) => a.findIndex((v2) => v2.user_id === v.user_id) === i,
-        );
+        .filter((v, i, a) => a.findIndex((v2) => v2.user_id === v.user_id) === i);
 
       const starts_at = new Date(startTimeInput || Date.now()).toISOString();
 
@@ -88,7 +86,7 @@ export default function CreateMeetingPage() {
           value={participantsInput}
           onChange={setParticipantsInput}
         />
-        <Button onClick={createMeeting} className="w-full bg-crybaby hover:bg-crybaby/80">
+        <Button onClick={createMeeting} className="w-full bg-crybaby hover:bg-crybaby/80 active:bg-crybaby/60">
           Create meeting
         </Button>
       </div>
