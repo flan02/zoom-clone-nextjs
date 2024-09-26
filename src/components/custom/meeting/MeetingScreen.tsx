@@ -10,7 +10,7 @@ import { CallUI } from "./CallUI";
 
 
 export function MeetingScreen() {
-  const call = useStreamCall();
+  const call = useStreamCall(); // * Custom hook. It ensures that "the call" is available in the component if not it throws an error
 
   const { useCallEndedAt, useCallStartsAt } = useCallStateHooks();
 
@@ -28,13 +28,8 @@ export function MeetingScreen() {
 
   const callHasEnded = !!callEndedAt; // ? (!!) converts to boolean
 
-  if (callHasEnded) {
-    return <MeetingEndedScreen />;
-  }
-
-  if (callIsInFuture) {
-    return <UpcomingMeetingScreen />;
-  }
+  if (callHasEnded) return <MeetingEndedScreen />;
+  if (callIsInFuture) return <UpcomingMeetingScreen />;
 
   const description = call.state.custom.description;
 
@@ -46,7 +41,6 @@ export function MeetingScreen() {
           Meeting description: &nbsp;&nbsp; <span className="font-bold">{description}</span>
         </p>
       }
-
       {
         setupComplete
           ? <CallUI />

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export default function useLoadCall(id: string) {
   const client = useStreamVideoClient();
 
-  const [call, setCall] = useState<Call>();
+  const [call, setCall] = useState<Call>(); // ? Call is a type from the SDK
   const [callLoading, setCallLoading] = useState(true);
 
   useEffect(() => {
@@ -18,9 +18,9 @@ export default function useLoadCall(id: string) {
       });
 
       if (calls.length > 0) {
-        const call = calls[0];
+        const call = calls[0]; // ? If calls is greater than 0, get the first call
 
-        await call.get();
+        await call.get(); // ? to load info about the call
 
         setCall(call);
       }

@@ -3,7 +3,7 @@ import AudioVolumeIndicator from "@/components/reutilizable/AudioVolumeIndicator
 import Button from "@/components/reutilizable/Button";
 import PermissionPrompt from "@/components/reutilizable/PermissionPrompt";
 import useStreamCall from "@/hooks/useStreamCall";
-import { DeviceSettings, MenuVisualType, useCallStateHooks, VideoPreview } from "@stream-io/video-react-sdk";
+import { DeviceSettings, useCallStateHooks, VideoPreview } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 
 
@@ -13,9 +13,9 @@ interface SetupUIProps {
 }
 
 export function SetupUI({ onSetupComplete }: SetupUIProps) {
-  const call = useStreamCall();
+  const call = useStreamCall(); // * Custom hook. It ensures that "the call" is available in the component if not it throws an error
 
-  const { useMicrophoneState, useCameraState } = useCallStateHooks();
+  const { useMicrophoneState, useCameraState } = useCallStateHooks(); // ? Stream SDK provides hooks to access the state of the call, mic and camera
 
   const micState = useMicrophoneState();
   const camState = useCameraState();
@@ -32,9 +32,7 @@ export function SetupUI({ onSetupComplete }: SetupUIProps) {
     }
   }, [micCamDisabled, call]);
 
-  if (!micState.hasBrowserPermission || !camState.hasBrowserPermission) {
-    return <PermissionPrompt />;
-  }
+  if (!micState.hasBrowserPermission || !camState.hasBrowserPermission) return <PermissionPrompt />;
 
   return (
     <div className="flex flex-col items-center gap-3">
