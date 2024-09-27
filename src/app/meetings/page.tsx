@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import MyMeetingsPage from "./MyMeetingsPage"
+import MyMeetingsPage from "../../components/custom/meetings/MyMeetingsPage"
 
 export const metadata: Metadata = {
   title: "My Meetings",

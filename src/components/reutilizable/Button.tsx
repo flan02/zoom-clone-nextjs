@@ -9,4 +9,4 @@ export default function Button({
 
 // - Export the `buttonClassName` constant.
 export const buttonClassName =
-  "flex items-center justify-center gap-2 rounded-full bg-blue-500 px-3 py-2 font-semibold text-white transition-colors hover:bg-blue-600 active:bg-blue-600 disabled:bg-gray-200";
+  "flex items-center justify-center gap-2 rounded-full bg-crybaby hover:bg-crybaby/80 active:bg-crybaby/60 px-3 py-2 font-semibold text-white transition-colors  disabled:bg-gray-200";

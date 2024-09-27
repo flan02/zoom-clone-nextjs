@@ -22,6 +22,7 @@ export function SetupUI({ onSetupComplete }: SetupUIProps) {
 
   const [micCamDisabled, setMicCamDisabled] = useState(false);
 
+  // ? Disable the mic and camera if the user wants to join the meeting with them off
   useEffect(() => {
     if (micCamDisabled) {
       call.camera.disable();
@@ -32,8 +33,9 @@ export function SetupUI({ onSetupComplete }: SetupUIProps) {
     }
   }, [micCamDisabled, call]);
 
-  if (!micState.hasBrowserPermission || !camState.hasBrowserPermission) return <PermissionPrompt />;
-
+  if (!micState.hasBrowserPermission || !camState.hasBrowserPermission) {
+    return <PermissionPrompt />
+  }
   return (
     <div className="flex flex-col items-center gap-3">
       <h1 className="text-center text-2xl font-bold">Setup</h1>

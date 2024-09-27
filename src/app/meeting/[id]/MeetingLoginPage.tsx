@@ -8,6 +8,7 @@ export default function MeetingLoginPage() {
   return (
     <div className="mx-auto w-fit space-y-3">
       <h1 className="text-center text-2xl font-bold">Join meeting</h1>
+
       <ClerkLoaded>
         <SignInButton>
           <Button className="w-44">Sign in</Button>
@@ -19,6 +20,7 @@ export default function MeetingLoginPage() {
           Continue as guest
         </Link>
       </ClerkLoaded>
+
       <ClerkLoading>
         <Loader2 className="mx-auto animate-spin" />
       </ClerkLoading>

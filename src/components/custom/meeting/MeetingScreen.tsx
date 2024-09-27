@@ -37,9 +37,7 @@ export function MeetingScreen() {
     <div className="space-y-6">
       {
         description &&
-        <p className="text-center">
-          Meeting description: &nbsp;&nbsp; <span className="font-bold">{description}</span>
-        </p>
+        <p className="text-center">Meeting description: &nbsp;&nbsp; <span className="font-bold">{description}</span></p>
       }
       {
         setupComplete

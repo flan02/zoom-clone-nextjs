@@ -1,21 +1,18 @@
-import {
-  Icon,
-  createSoundDetector,
-  useCallStateHooks,
-} from "@stream-io/video-react-sdk";
+import { Icon, createSoundDetector, useCallStateHooks } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 
 export default function AudioVolumeIndicator() {
-  const { useMicrophoneState } = useCallStateHooks();
+  const { useMicrophoneState } = useCallStateHooks(); // ? Stream SDK provides hooks to access the state of the call, mic and camera
   const { isEnabled, mediaStream } = useMicrophoneState();
   const [audioLevel, setAudioLevel] = useState(0);
 
   useEffect(() => {
-    if (!isEnabled || !mediaStream) return;
-
+    if (!isEnabled || !mediaStream) {
+      return;
+    }
     const disposeSoundDetector = createSoundDetector(
       mediaStream,
-      ({ audioLevel: al }) => setAudioLevel(al),
+      ({ audioLevel: al }) => setAudioLevel(al), // * 2nd param is a Callback fc to update the audio level
       { detectionFrequencyInMs: 80, destroyStreamOnStop: false },
     );
 
@@ -24,7 +21,9 @@ export default function AudioVolumeIndicator() {
     };
   }, [isEnabled, mediaStream]);
 
-  if (!isEnabled) return null;
+  if (!isEnabled) {
+    return null;
+  }
 
   return (
     <div className="flex w-72 items-center gap-3 rounded-md bg-slate-900 p-4">

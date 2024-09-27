@@ -71,7 +71,7 @@ export default function CreateMeetingPage() {
 
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center justify-center space-y-2 border border-white min-h-[80vh]">
       <h1 className="text-center text-2xl font-bold">
         Welcome {user.username}!
       </h1>
